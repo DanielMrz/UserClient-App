@@ -1,0 +1,40 @@
+<div class="" *ngIf="user">
+    <div class="form-title">
+        <h2>{{ user.nickName }}</h2>
+    </div>
+    <div class="form-group row mb-1">
+        <label class="col-form-label col-4" for="nick">Nick: </label>
+        <div class="col-8">
+            <input [(ngModel)]="user.nickName" type="text" class="form-control" id="nick" placeholder="...">
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <label class="col-form-label col-4" for="firstName">Imię: </label>
+        <div class="col-8">
+            <input [(ngModel)]="user.firstName" type="text" class="form-control" id="firstName" placeholder="...">
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <label class="col-form-label col-4" for="lastName">Nazwisko: </label>
+        <div class="col-8">
+            <input [(ngModel)]="user.lastName" type="text" class="form-control" id="lastName" placeholder="...">
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <label class="col-form-label col-4" for="email">Email: </label>
+        <div class="col-8">
+            <input [(ngModel)]="user.email" type="email" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <label class="col-form-label col-4" for="city">Miasto: </label>
+        <div class="col-8">
+            <input [(ngModel)]="user.city" type="text" class="form-control" id="city" placeholder="...">
+        </div>
+    </div>
+    <div class="mt-3">
+        <button type="button" class="btn btn-success" (click)="createUser(user)" *ngIf="!user.id">Stwórz użytkownika</button>
+        <button type="button" class="btn btn-success" style="margin-right: 10px" (click)="updateUser(user)" *ngIf="user.id">Zapisz</button>
+        <button type="button" class="btn btn-danger" (click)="deleteUser(user)" *ngIf="user.id">Usuń</button>
+    </div>
+</div>

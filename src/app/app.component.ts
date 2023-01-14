@@ -8,13 +8,28 @@ import { UserClientService } from './services/userclient-app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Testuje UserClientApp.UI';
   users: UserClient[] = []; // Pod zmienną users znajdzie się tablica zainicjalizowana jako pusta
+  userToEdit?: UserClient;
 
   constructor(private userClientService: UserClientService) {}
 
   ngOnInit() : void {
-    this.users = this.userClientService.getUsers();
-    console.log(this.users);
+    this.userClientService
+        .getUsers()
+        .subscribe((result: UserClient[]) => (this.users = result));
+    // this.users = this.userClientService.getUsers();
+    // console.log(this.users);
+  }
+
+  updateUserList(users: UserClient[]) {
+    this.users = users;
+  }
+
+  initNewUser() {
+    this.userToEdit = new UserClient();
+  }
+
+  editUser(user: UserClient) {
+    this.userToEdit = user;
   }
 }

@@ -1,19 +1,43 @@
-<h1>{{ title }}</h1>
-<hr>
-<br>
 
-<table>
-  <thead>
-    <th>Nick</th>
-    <th>Imię</th>
-    <th>Nazwisko</th>
-    <th>Miasto</th>
-  </thead>
-  <tbody>
-    <tr> *ngFor="let user of users"</tr>
-    <td>{{ user.nickName }}</td>
-    <td>{{ user.firstName }}</td>
-    <td>{{ user.lastName }}</td>
-    <td>{{ user.city }}</td>
-  </tbody>
-</table>
+<app-header></app-header>
+
+<section>
+  <div class="container">
+    <br>
+      <button type="button" class="btn btn-success mb-3" (click)="initNewUser()">Dodaj nowego użytkownika</button>
+    <br>
+    <div class="row">
+      <div class="col-8">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <th class="col">Nick</th>
+            <th class="col">Imię</th>
+            <th class="col">Nazwisko</th>
+            <th class="col">E-mail</th>
+            <th class="col">Miasto</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td scope="row">{{ user.nickName }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.city }}</td>
+              <td><button type="button" class="btn btn-warning" (click)="editUser(user)">Edytuj</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-4">
+        <!-- Komponent -->
+        <app-edit-user 
+        [user]="userToEdit"
+        (usersUpdated)="updateUserList($event)"
+      ></app-edit-user>
+      </div>
+    </div>
+
+
+  </div>
+</section>

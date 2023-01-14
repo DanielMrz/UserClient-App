@@ -4,5 +4,6 @@ export class UserClient {
     nickName = "";
     firstName = "";
     lastName = "";
+    email = "";
     city = "";
 }
