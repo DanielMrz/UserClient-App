@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserClient } from './models/userclient-app';
+import { UserClientService } from './services/userclient-app.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'UserClientApp.UI';
+  title = 'Testuje UserClientApp.UI';
+  users: UserClient[] = []; // Pod zmienną users znajdzie się tablica zainicjalizowana jako pusta
+
+  constructor(private userClientService: UserClientService) {}
+
+  ngOnInit() : void {
+    this.users = this.userClientService.getUsers();
+    console.log(this.users);
+  }
 }
